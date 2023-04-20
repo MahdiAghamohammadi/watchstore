@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone')->unique()->nullable();
             $table->string('photo')->nullable();
             $table->boolean('is_admin')->default(false);
-            $table->string('status')->default(\App\Enums\userStatus::Active->value);
+            $table->string('status')->default(\App\Enums\UserStatus::Active->value);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
