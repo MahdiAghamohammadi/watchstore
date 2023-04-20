@@ -28,10 +28,10 @@
                         <tbody>
                         @foreach($users as $index => $user)
                             <tr>
-                                <td class="text-center align-middle">{{ $users->firstItem() }}</td>
+                                <td class="text-center align-middle">{{ $users->firstItem() + $index }}</td>
                                 <td class="text-center align-middle">
                                     <figure class="avatar avatar">
-                                        <img src="" class="rounded-circle" alt="image">
+                                        <img src="{{ url('images/admin/users/big/'.$user->photo) }}" class="rounded-circle" alt="image">
                                     </figure>
                                 </td>
                                 <td class="text-center align-middle">{{ $user->name }}</td>
@@ -54,7 +54,7 @@
                                         ویرایش
                                     </a>
                                 </td>
-                                <td class="text-center align-middle">{{ $user->created_at }}</td>
+                                <td class="text-center align-middle">{{ \Hekmatinasser\Verta\Verta::instance($user->created_at)->format('%B %d، %Y') }}</td>
                             </tr>
                         @endforeach
                     </table>

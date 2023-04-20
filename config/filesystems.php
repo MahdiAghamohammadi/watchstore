@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 return [
 
@@ -31,6 +31,12 @@ return [
     'disks' => [
 
         'local' => [
+            'driver' => 'local',
+            'root' => public_path('images'),
+            'throw' => false,
+        ],
+
+        'private' => [
             'driver' => 'local',
             'root' => storage_path('app'),
             'throw' => false,

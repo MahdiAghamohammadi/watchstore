@@ -30,7 +30,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = User::saveImage($request->file);
+        User::query()->create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'mobile' => $request->input('mobile'),
+            'password' => $request->input('password'),
+            'photo' => $image,
+        ]);
+        return redirect()->back()->with('message', 'کاربر جدید با موفقیت ثبت شد.');
     }
 
     /**
