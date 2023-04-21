@@ -26,7 +26,8 @@
                     <td class="text-center align-middle">{{ $users->firstItem() + $index }}</td>
                     <td class="text-center align-middle">
                         <figure class="avatar avatar">
-                            <img src="{{ url('images/admin/users/big/'.$user->photo) }}" class="rounded-circle" alt="image">
+                            <img src="{{ url('images/admin/users/big/'.$user->photo) }}" class="rounded-circle"
+                                 alt="image">
                         </figure>
                     </td>
                     <td class="text-center align-middle">{{ $user->name }}</td>
@@ -37,7 +38,7 @@
                             نقش های کاربر
                         </a>
                     </td>
-                    <td class="text-center align-middle">
+                    <td class="text-center align-middle" wire:click="changeUserStatus({{ $user->id }})">
                         @if($user->status == \App\Enums\UserStatus::Active->value)
                             <span class="cursor-pointer badge badge-success">فعال</span>
                         @else
@@ -55,6 +56,7 @@
         </table>
         <div style="margin: 40px !important;"
              class="pagination pagination-rounded pagination-sm d-flex justify-content-center">
+            {{ $users->appends(Request::except('page'))->links() }}
         </div>
     </div>
 </div>
