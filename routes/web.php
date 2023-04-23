@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PanelController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,5 @@ require __DIR__.'/auth.php';
 Route::middleware('auth')->prefix('/admin')->group(function (){
     Route::get('/', [PanelController::class, 'index'])->name('panel');
     Route::resource('/users', UserController::class);
+    Route::resource('/roles', RoleController::class);
 });

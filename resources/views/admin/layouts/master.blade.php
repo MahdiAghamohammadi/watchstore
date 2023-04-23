@@ -9,7 +9,7 @@
 {{--Naviagtion--}}
 @include('admin.layouts.navigation')
 {{--Header--}}
-@include('admin.layouts.header')
+@include('admin.layouts.header', [$title = $title ?? ""])
 {{--Content--}}
 @yield('content')
 @include('admin.layouts.scripts')
