@@ -25,4 +25,11 @@ class RoleRequest extends FormRequest
             'name' => 'required|unique:roles,name'
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'نام نقش'
+        ];
+    }
 }

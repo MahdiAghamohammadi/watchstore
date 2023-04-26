@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -84,4 +86,17 @@ class UserController extends Controller
     {
         //
     }
+
+    public function createUserRoles(User $user)
+    {
+        $roles = Role::query()->get();
+        return view('admin.user.create-user-roles', compact('user', 'roles'));
+    }
+
+    public function storeUserRoles(Request $request, User $user)
+    {
+        $user->syncRoles([$request->roles]);
+        return to_route('users.index')->with('message', 'نقش های کاربر با موفقیت ویرایش شد.');
+    }
+
 }

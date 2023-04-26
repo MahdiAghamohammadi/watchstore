@@ -37,4 +37,6 @@ Route::middleware('auth')->prefix('/admin')->group(function (){
     Route::get('/', [PanelController::class, 'index'])->name('panel');
     Route::resource('/users', UserController::class);
     Route::resource('/roles', RoleController::class);
+    Route::get('/create-user-roles/{user}', [UserController::class, 'createUserRoles'])->name('create.user.roles');
+    Route::post('/store-user-roles/{user}', [UserController::class, 'storeUserRoles'])->name('store.user.roles');
 });
