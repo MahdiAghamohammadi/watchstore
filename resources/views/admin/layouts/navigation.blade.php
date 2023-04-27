@@ -1,6 +1,6 @@
 <div class="navigation">
     <div class="navigation-icon-menu">
-         <ul>
+        <ul>
             <li data-toggle="tooltip" title="کاربران">
                 <a href="#users" title=" کاربران">
                     <i class="icon ti-user"></i>
@@ -34,6 +34,12 @@
                 <ul>
                     <li><a href="{{ route('roles.create') }}">ایجاد نقش</a></li>
                     <li><a href="{{ route('roles.index') }}">لیست نقش ها</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">لاگ ها</a>
+                <ul>
+                    <li><a href="{{ route('log-viewer') }}">لیست لاگ ها</a></li>
                 </ul>
             </li>
         </ul>

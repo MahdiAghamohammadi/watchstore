@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LogViewerController;
 use App\Http\Controllers\Admin\PanelController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -39,4 +40,5 @@ Route::middleware('auth')->prefix('/admin')->group(function (){
     Route::resource('/roles', RoleController::class);
     Route::get('/create-user-roles/{user}', [UserController::class, 'createUserRoles'])->name('create.user.roles');
     Route::post('/store-user-roles/{user}', [UserController::class, 'storeUserRoles'])->name('store.user.roles');
+    Route::get('/logs', [LogViewerController::class, 'index'])->name('log-viewer');
 });
