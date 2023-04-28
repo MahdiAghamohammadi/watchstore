@@ -27,15 +27,19 @@
                                         data-select2-id="1"
                                         tabindex="-1"
                                         aria-hidden="true">
-                                    <option selected="selected" value="0">دسته اصلی</option>
-                                    @foreach($categories as $key => $category)
-                                        <option selected="selected" value="{{ $key }}">{{ $category }}</option>
+                                    <option value="">دسته اصلی</option>
+                                    @foreach($categories as $key => $value)
+                                        <option
+                                            value="{{ $key }}"
+                                            @if (old('parent_id') == $key)
+                                                selected
+                                            @endif>
+                                            {{ $value }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
-
                         </div>
-
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="file"> آپلود عکس </label>
                             <input class="col-sm-10 form-control-file" type="file" id="file" name="file">
