@@ -2,6 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
     @include('admin.layouts.head-tag')
+    @yield('head-tag')
     @livewireStyles
     <title>@yield('title', 'قالب مدیریتی')</title>
 </head>
@@ -13,6 +14,7 @@
 {{--Content--}}
 @yield('content')
 @include('admin.layouts.scripts')
+@yield('scripts')
 @livewireScripts
 </body>
 </html>
