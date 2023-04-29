@@ -14,6 +14,7 @@
                 <th class="text-center align-middle text-primary">نام</th>
                 <th class="text-center align-middle text-primary">دسته پدر</th>
                 <th class="text-center align-middle text-primary">ویرایش</th>
+                <th class="text-center align-middle text-primary">حذف</th>
                 <th class="text-center align-middle text-primary">تاریخ ایجاد</th>
             </tr>
             </thead>
@@ -32,6 +33,11 @@
                     <td class="text-center align-middle">
                         <a class="btn btn-outline-info" href="{{ route('category.edit', $category->id) }}">
                             ویرایش
+                        </a>
+                    </td>
+                    <td class="text-center align-middle">
+                        <a class="btn btn-outline-danger" wire:click="deleteCategory({{ $category->id }})">
+                            حذف
                         </a>
                     </td>
                     <td class="text-center align-middle">{{ \Hekmatinasser\Verta\Verta::instance($category->created_at)->format('%B %d، %Y') }}</td>
