@@ -70,7 +70,7 @@ class CategoryController extends Controller
             'parent_id' => $request->input('parent_id') ?? 0,
             'image' => $image,
         ]);
-        return to_route('category.index')->with('message', 'دسته بندی جدید با موفقیت ویرایش شد.');
+        return to_route('category.index')->with('message', 'دسته بندی با موفقیت ویرایش شد.');
     }
 
     /**
