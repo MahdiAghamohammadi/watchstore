@@ -23,15 +23,16 @@ class SliderRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'url' => 'sometimes',
-            'image' => 'required|image'
+            'url' => 'required',
+            'file' => 'required|image'
         ];
     }
 
     public function attributes()
     {
         return [
-            'title' => 'عنوان اسلایدر'
+            'title' => 'عنوان اسلایدر',
+            'file' => 'عکس'
         ];
     }
 }
