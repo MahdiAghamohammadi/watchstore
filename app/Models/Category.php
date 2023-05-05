@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
 class Category extends Model
 {
@@ -30,23 +28,5 @@ class Category extends Model
     {
         return $this
             ->hasMany(self::class, 'parent_id', 'id');
-    }
-
-    public static function saveImage($file)
-    {
-        if ($file) {
-            $name = time() . '.' . $file->extension();
-            $smallImage = Image::make($file->getRealPath());
-            $bigImage = Image::make($file->getRealPath());
-            $smallImage->resize(256, 256, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            Storage::disk('local')->put('admin/category/small/' . $name, (string)$smallImage->encode('png', 90));
-            Storage::disk('local')->put('admin/category/big/' . $name, (string)$bigImage->encode('png', 90));
-            return $name;
-        } else {
-            return '';
-        }
     }
 }

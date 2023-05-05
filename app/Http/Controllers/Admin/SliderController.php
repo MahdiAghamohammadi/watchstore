@@ -32,7 +32,7 @@ class SliderController extends Controller
      */
     public function store(SliderRequest $request)
     {
-        $image = Slider::saveImage($request->file);
+        $image = saveImage($request->file, 'sliders');
         Slider::query()->create([
             'title' => $request->input('title'),
             'url' => $request->input('url'),
@@ -63,7 +63,7 @@ class SliderController extends Controller
      */
     public function update(SliderRequest $request, Slider $slider)
     {
-        $image = Slider::saveImage($request->file);
+        $image = saveImage($request->file, 'sliders');
         $slider->update([
             'title' => $request->input('title'),
             'url' => $request->input('url'),

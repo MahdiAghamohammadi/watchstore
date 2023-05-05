@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        $image = User::saveImage($request->file);
+        $image = saveImage($request->file, 'users');
         User::query()->create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -68,7 +68,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $image = User::saveImage($request->file);
+        $image = saveImage($request->file, 'users');
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
