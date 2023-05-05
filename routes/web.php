@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LogViewerController;
 use App\Http\Controllers\Admin\PanelController;
@@ -52,4 +53,7 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
 
     // sliders
     Route::resource('sliders', SliderController::class);
+
+    // brands
+    Route::resource('brands', BrandController::class);
 });

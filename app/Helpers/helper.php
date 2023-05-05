@@ -17,6 +17,6 @@ function saveImage($file, $folder)
         Storage::disk('local')->put("admin/{$folder}/big/" . $name, (string)$bigImage->encode('png', 90));
         return $name;
     } else {
-        return '';
+        return false;
     }
 }
