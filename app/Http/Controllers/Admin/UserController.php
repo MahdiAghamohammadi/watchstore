@@ -68,7 +68,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $image = saveImage($request->file, 'users');
+        $image = saveImage($request->file, 'users') ? saveImage($request->file, 'users') : $user->photo;
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),

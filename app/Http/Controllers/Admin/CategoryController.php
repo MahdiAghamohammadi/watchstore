@@ -64,7 +64,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        $image = saveImage($request->file, 'categories');
+        $image = saveImage($request->file, 'categories') ? saveImage($request->file, 'categories') : $category->image;
         $category->update([
             'title' => $request->input('title'),
             'parent_id' => $request->input('parent_id') ?? 0,

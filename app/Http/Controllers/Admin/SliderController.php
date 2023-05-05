@@ -63,7 +63,7 @@ class SliderController extends Controller
      */
     public function update(SliderRequest $request, Slider $slider)
     {
-        $image = saveImage($request->file, 'sliders');
+        $image = saveImage($request->file, 'sliders') ? saveImage($request->file, 'sliders') : $slider->image;
         $slider->update([
             'title' => $request->input('title'),
             'url' => $request->input('url'),
