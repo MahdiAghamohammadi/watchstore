@@ -70,6 +70,13 @@
                     <li><a href="{{ route('brands.index') }}">لیست برند ها</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#">رنگ</a>
+                <ul>
+                    <li><a href="{{ route('colors.create') }}">ایجاد رنگ</a></li>
+                    <li><a href="{{ route('colors.index') }}">لیست رنگ ها</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
