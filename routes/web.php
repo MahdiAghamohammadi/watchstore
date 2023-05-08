@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\LogViewerController;
 use App\Http\Controllers\Admin\PanelController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UserController;
@@ -58,6 +59,9 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
     // brands
     Route::resource('brands', BrandController::class);
 
-    // brands
+    // colors
     Route::resource('colors', ColorController::class);
+
+    // products
+    Route::resource('products', ProductController::class);
 });
