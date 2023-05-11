@@ -9,10 +9,17 @@
         <div class="card">
             <div class="card-body">
                 <div class="container">
-                    <h6 class="card-title">ایجاد محصول</h6>
+                    <h6 class="card-title">ویرایش محصول</h6>
                     <form method="POST" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
+                        <div>
+                            <figure class="avatar avatar">
+                                <img src="{{ url('images/admin/products/big/'.$product->image) }}"
+                                     class="rounded-circle"
+                                     alt="image">
+                            </figure>
+                        </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="name">نام فارسی محصول</label>
                             <div class="col-sm-10">
