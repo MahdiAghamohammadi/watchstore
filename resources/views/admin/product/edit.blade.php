@@ -77,7 +77,7 @@
                                     <input type="checkbox" class="custom-control-input"
                                            id="customCheck"
                                            name="is_special"
-                                           value="{{ old('is_special') }}">
+                                           @if(old('is_special', $product->is_special)) checked @endif>
                                     <label class="custom-control-label" for="customCheck">فروش ویژه</label>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                             <div class="col-sm-6">
                                 <input type="text" class="form-control text-left" dir="rtl" id="special_expire"
                                        name="special_expire"
-                                       value="{{ old('special_expire') }}">
+                                       value="{{ old('special_expire', \Hekmatinasser\Verta\Verta::instance($product->special_expire)->format('%Y/%m/%d')) }}">
                             </div>
                         </div>
                         <div class="form-group row">

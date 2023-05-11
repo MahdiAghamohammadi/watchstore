@@ -69,7 +69,7 @@
                                     <input type="checkbox" class="custom-control-input"
                                            id="customCheck"
                                            name="is_special"
-                                           value="{{ old('is_special') }}">
+                                           @if(old('is_special')) checked @endif>
                                     <label class="custom-control-label" for="customCheck">فروش ویژه</label>
                                 </div>
                             </div>
