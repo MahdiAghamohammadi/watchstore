@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\LogViewerController;
 use App\Http\Controllers\Admin\PanelController;
 use App\Http\Controllers\Admin\ProductController;
@@ -42,26 +43,27 @@ require __DIR__ . '/auth.php';
 Route::middleware('auth')->prefix('/admin')->group(function () {
     // panel
     Route::get('/', [PanelController::class, 'index'])->name('panel');
+
     // users
     Route::resource('/users', UserController::class);
+
     // roles
     Route::resource('/roles', RoleController::class);
     Route::get('/create-user-roles/{user}', [UserController::class, 'createUserRoles'])->name('create.user.roles');
     Route::post('/store-user-roles/{user}', [UserController::class, 'storeUserRoles'])->name('store.user.roles');
+
     // logs
     Route::get('/logs', [LogViewerController::class, 'index'])->name('log-viewer');
-    // product
-    Route::resource('category', CategoryController::class);
-
-    // sliders
-    Route::resource('sliders', SliderController::class);
-
-    // brands
-    Route::resource('brands', BrandController::class);
-
-    // colors
-    Route::resource('colors', ColorController::class);
 
     // products
+    Route::resource('category', CategoryController::class);
+    Route::resource('sliders', SliderController::class);
+    Route::resource('brands', BrandController::class);
+    Route::resource('colors', ColorController::class);
     Route::resource('products', ProductController::class);
+    // Gallery
+    Route::controller(GalleryController::class)->group(function () {
+        Route::get('create-product-gallery/{product}', 'addGallery')->name('create-product-gallery');
+        Route::post('store-product-gallery/{product}', 'storeGallery')->name('store-product-gallery');
+    });
 });

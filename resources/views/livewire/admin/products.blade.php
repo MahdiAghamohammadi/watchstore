@@ -16,6 +16,7 @@
                 <th class="text-center align-middle text-primary">تعداد</th>
                 <th class="text-center align-middle text-primary">ویرایش</th>
                 <th class="text-center align-middle text-primary">حذف</th>
+                <th class="text-center align-middle text-primary">گالری</th>
                 <th class="text-center align-middle text-primary">تاریخ ایجاد</th>
             </tr>
             </thead>
@@ -40,6 +41,11 @@
                     <td class="text-center align-middle">
                         <a class="btn btn-outline-danger" wire:click="deleteProduct({{ $product->id }})">
                             حذف
+                        </a>
+                    </td>
+                    <td class="text-center align-middle">
+                        <a class="btn btn-outline-warning" href="{{ route('create-product-gallery', $product->id) }}">
+                            گالری
                         </a>
                     </td>
                     <td class="text-center align-middle">{{ \Hekmatinasser\Verta\Verta::instance($product->created_at)->format('%B %d، %Y') }}</td>
