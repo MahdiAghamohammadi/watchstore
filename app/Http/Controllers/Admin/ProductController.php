@@ -89,7 +89,7 @@ class ProductController extends Controller
             'slug' => make_slug($request->input('name')),
             'price' => $request->input('price'),
             'count' => $request->input('count'),
-            'image' => $image,
+            'image' => ($request->file ? $image : $product->image),
             'guaranty' => $request->input('guaranty'),
             'discount' => $request->input('discount'),
             'description' => $request->input('description'),

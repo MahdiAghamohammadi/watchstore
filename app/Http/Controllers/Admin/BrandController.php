@@ -62,11 +62,10 @@ class BrandController extends Controller
      */
     public function update(BrandRequest $request, Brand $brand)
     {
-        $image = saveImage($request->file, 'brands') ? saveImage($request->file, 'brands') : $brand->image;
-//        dd($image);
+        $image = saveImage($request->file, 'brands');
         $brand->update([
             'name' => $request->input('name'),
-            'image' => $image,
+            'image' => ($request->file ? $image : $brand->image),
         ]);
         return to_route('brands.index')->with('message', 'برند با موفقیت ویرایش شد.');
     }

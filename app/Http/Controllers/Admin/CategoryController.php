@@ -64,11 +64,11 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        $image = saveImage($request->file, 'categories') ? saveImage($request->file, 'categories') : $category->image;
+        $image = saveImage($request->file, 'categories');
         $category->update([
             'title' => $request->input('title'),
             'parent_id' => $request->input('parent_id') ?? 0,
-            'image' => $image,
+            'image' => ($request->file ? $image : $category->image),
         ]);
         return to_route('category.index')->with('message', 'دسته بندی با موفقیت ویرایش شد.');
     }

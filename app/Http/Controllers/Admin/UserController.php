@@ -68,13 +68,13 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $image = saveImage($request->file, 'users') ? saveImage($request->file, 'users') : $user->photo;
+        $image = saveImage($request->file, 'users');
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'mobile' => $request->input('mobile'),
             'password' => ($request->input('password') ? Hash::make($request->input('password')) : $user->password),
-            'photo' => $image,
+            'photo' => ($request->file ? $image : $user->photo),
         ]);
         return to_route('users.index')->with('message', 'کاربر با موفقیت ویرایش شد.');
     }

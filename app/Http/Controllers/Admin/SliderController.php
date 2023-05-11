@@ -63,11 +63,11 @@ class SliderController extends Controller
      */
     public function update(SliderRequest $request, Slider $slider)
     {
-        $image = saveImage($request->file, 'sliders') ? saveImage($request->file, 'sliders') : $slider->image;
+        $image = saveImage($request->file, 'sliders');
         $slider->update([
             'title' => $request->input('title'),
             'url' => $request->input('url'),
-            'image' => $image,
+            'image' => ($request->file ? $image : $slider->image),
         ]);
         return to_route('sliders.index')->with('message', 'اسلایدر با موفقیت ویرایش شد.');
     }
