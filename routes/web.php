@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\LogViewerController;
 use App\Http\Controllers\Admin\PanelController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyGroupController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SliderController;
@@ -63,6 +64,7 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::resource('colors', ColorController::class);
     Route::resource('products', ProductController::class);
     Route::resource('property-groups', PropertyGroupController::class);
+    Route::resource('properties', PropertyController::class);
     // Gallery
     Route::controller(GalleryController::class)->group(function () {
         Route::get('create-product-gallery/{product}', 'addGallery')->name('create-product-gallery');

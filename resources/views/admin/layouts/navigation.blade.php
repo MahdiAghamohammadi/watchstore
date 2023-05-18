@@ -89,6 +89,8 @@
                 <ul>
                     <li><a href="{{ route('property-groups.create') }}">ایجاد گروه ویژگی ها</a></li>
                     <li><a href="{{ route('property-groups.index') }}">لیست گروه ویژگی ها</a></li>
+                    <li><a href="{{ route('properties.create') }}">ایجاد ویژگی ها</a></li>
+                    <li><a href="{{ route('properties.index') }}">لیست ویژگی ها</a></li>
                 </ul>
             </li>
         </ul>
