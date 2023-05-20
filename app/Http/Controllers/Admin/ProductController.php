@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class ProductController extends Controller
         $title = 'ایجاد محصول';
         $categories = Category::query()->pluck('title', 'id');
         $brands = Brand::query()->pluck('name', 'id');
-        return view('admin.product.create', compact('title', 'categories', 'brands'));
+        $colors = Color::query()->pluck('title', 'id');
+        return view('admin.product.create', compact('title', 'categories', 'brands', 'colors'));
     }
 
     /**
@@ -55,6 +57,9 @@ class ProductController extends Controller
             'brand_id' => $request->input('brand_id'),
         ]);
 
+        $colors = $request->colors;
+        $product->colors()->attach($colors);
+
         return redirect()->route('products.index')->with('message', 'محصول جدید با موفقیت اضافه شد.');
     }
 
@@ -74,7 +79,8 @@ class ProductController extends Controller
         $title = 'ویرایش محصول';
         $categories = Category::query()->pluck('title', 'id');
         $brands = Brand::query()->pluck('name', 'id');
-        return view('admin.product.edit', compact('title', 'product', 'categories', 'brands'));
+        $colors = Color::query()->pluck('title', 'id');
+        return view('admin.product.edit', compact('title', 'product', 'categories', 'brands', 'colors'));
     }
 
     /**
@@ -101,6 +107,8 @@ class ProductController extends Controller
             'brand_id' => $request->input('brand_id'),
         ]);
 
+        $colors = $request->colors;
+        $product->colors()->sync($colors);
         return redirect()->route('products.index')->with('message', 'محصول با موفقیت ویرایش شد.');
     }
 
