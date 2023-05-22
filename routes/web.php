@@ -30,6 +30,10 @@ Route::get('/', function () {
     return to_route('login');
 });
 
+Route::get('/user-not-admin', function () {
+    return view('admin.user-not-admin');
+})->name('user-not-admin');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -42,7 +46,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::middleware('auth')->prefix('/admin')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     // panel
     Route::get('/', [PanelController::class, 'index'])->name('panel');
 
