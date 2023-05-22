@@ -65,6 +65,14 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('property-groups', PropertyGroupController::class);
     Route::resource('properties', PropertyController::class);
+
+    // Product Property
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('create-product-properties/{product}', 'addProperties')->name('create-product-properties');
+        Route::post('store-product-properties/{product}', 'storeProperties')->name('store-product-properties');
+    });
+
+
     // Gallery
     Route::controller(GalleryController::class)->group(function () {
         Route::get('create-product-gallery/{product}', 'addGallery')->name('create-product-gallery');
