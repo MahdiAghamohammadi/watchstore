@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\UserApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,10 @@ use Illuminate\Support\Facades\Route;
 Route::controller(AuthController::class)->prefix('/v1')->group(function () {
     Route::post('send_sms', 'sendSms');
     Route::post('verify_sms_code', 'verifySmsCode');
+});
+
+Route::prefix('/v1')->middleware('auth:sanctum')->group(function () {
+    Route::controller(UserApiController::class)->group(function () {
+        Route::post('register', 'register');
+    });
 });

@@ -113,7 +113,7 @@ class AuthController extends Controller
                         'user_id' => $user->id,
                         'token' => $user->createToken('new Token')->plainTextToken
                     ]
-                ], 200);
+                ]);
             } else {
                 $user = User::query()->create([
                     'mobile' => $mobile,
