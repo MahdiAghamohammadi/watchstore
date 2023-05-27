@@ -26,4 +26,17 @@ class SmsCode extends Model
         }
         return false;
     }
+
+    public static function checkCode($mobile, $code): bool
+    {
+        $check = self::query()->where([
+            'mobile' => $mobile,
+            'code' => $code,
+        ])->first();
+
+        if ($check) {
+            return true;
+        }
+        return false;
+    }
 }

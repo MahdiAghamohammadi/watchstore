@@ -21,4 +21,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)->prefix('/v1')->group(function () {
     Route::post('send_sms', 'sendSms');
+    Route::post('verify_sms_code', 'verifySmsCode');
 });
