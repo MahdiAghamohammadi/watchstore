@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Resources\CategoryResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -28,5 +29,11 @@ class Category extends Model
     {
         return $this
             ->hasMany(self::class, 'parent_id', 'id');
+    }
+
+    public static function getAllCategories()
+    {
+        $categories = self::query()->get();
+        return CategoryResource::collection($categories);
     }
 }
