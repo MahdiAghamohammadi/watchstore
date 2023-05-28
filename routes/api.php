@@ -20,13 +20,14 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::controller(AuthController::class)->prefix('/v1')->group(function () {
-    Route::post('send_sms', 'sendSms');
-    Route::post('verify_sms_code', 'verifySmsCode');
-});
-
-Route::prefix('/v1')->middleware('auth:sanctum')->group(function () {
-    Route::controller(UserApiController::class)->group(function () {
-        Route::post('register', 'register');
+Route::prefix('/v1')->group(function () {
+    Route::controller(AuthController::class)->group(function () {
+        Route::post('send_sms', 'sendSms');
+        Route::post('verify_sms_code', 'verifySmsCode');
+    });
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::controller(UserApiController::class)->group(function () {
+            Route::post('register', 'register');
+        });
     });
 });
