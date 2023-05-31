@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\ProductRepository;
 use App\Http\Services\Keys;
+use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class ProductApiController extends Controller
             'result' => true,
             'message' => 'Application products Page',
             'data' => [
-                Keys::categories => Category::getAllCategories(),
+                Keys::brands => Brand::getAllBrands(),
                 Keys::most_seller_products => ProductRepository::getAllMostSellerProducts()
                     ->response()
                     ->getData(true),
@@ -30,7 +31,7 @@ class ProductApiController extends Controller
             'result' => true,
             'message' => 'Application products Page',
             'data' => [
-                Keys::categories => Category::getAllCategories(),
+                Keys::brands => Brand::getAllBrands(),
                 Keys::most_viewed_products => ProductRepository::getMostViewedProducts()
                     ->response()
                     ->getData(true),
@@ -44,7 +45,7 @@ class ProductApiController extends Controller
             'result' => true,
             'message' => 'Application products Page',
             'data' => [
-                Keys::categories => Category::getAllCategories(),
+                Keys::brands => Brand::getAllBrands(),
                 Keys::newest_products => ProductRepository::getAllNewestProducts()
                     ->response()
                     ->getData(true),
@@ -58,7 +59,7 @@ class ProductApiController extends Controller
             'result' => true,
             'message' => 'Application products Page',
             'data' => [
-                Keys::categories => Category::getAllCategories(),
+                Keys::brands => Brand::getAllBrands(),
                 Keys::cheapest_products => ProductRepository::getCheapestProducts()
                     ->response()
                     ->getData(true),

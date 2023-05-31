@@ -5,6 +5,7 @@ namespace App\Http\Services;
 class Keys
 {
     const sliders = 'sliders';
+    const brands = 'brands';
     const categories = 'categories';
     const amazing_products = 'amazing_products';
     const banner = 'banner';
