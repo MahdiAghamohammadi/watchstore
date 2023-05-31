@@ -14,4 +14,6 @@ class Keys
     const cheapest_products = 'cheapest_products';
     const most_expensive_products = 'most_expensive_products';
     const newest_products = 'newest_products';
+    const products_by_category = 'products_by_category';
+    const products_by_brand = 'products_by_brand';
 }

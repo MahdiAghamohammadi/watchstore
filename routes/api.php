@@ -37,6 +37,8 @@ Route::prefix('/v1')->group(function () {
         Route::get('newest_products', 'newest_products');
         Route::get('cheapest_products', 'cheapest_products');
         Route::get('most_expensive_products', 'most_expensive_products');
+        Route::get('products_by_category/{category}', 'products_by_category');
+        Route::get('products_by_brand/{brand}', 'products_by_brand');
     });
 
     // with auth
