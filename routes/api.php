@@ -39,6 +39,7 @@ Route::prefix('/v1')->group(function () {
         Route::get('most_expensive_products', 'most_expensive_products');
         Route::get('products_by_category/{category}', 'products_by_category');
         Route::get('products_by_brand/{brand}', 'products_by_brand');
+        Route::get('product_details/{product}', 'product_detail');
     });
 
     // with auth

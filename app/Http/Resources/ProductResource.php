@@ -32,7 +32,10 @@ class ProductResource extends JsonResource
             'category_id' => $this->category_id,
             'category' => $this->category->title,
             'brand_id' => $this->brand_id,
-            'brand' => $this->brand->name
+            'brand' => $this->brand->name,
+            'comments' => CommentResource::collection($this->comments),
+            'colors' => ColorResource::collection($this->colors),
+            'properties' => PropertyResource::collection($this->properties),
         ];
     }
 }

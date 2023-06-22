@@ -210,7 +210,7 @@
                 "tags": [
                     "Products Page"
                 ],
-                "description": "get products data by category id",
+                "description": "get products data by brand id",
                 "operationId": "c6813a677a7785aa6e7928cbfcf09493",
                 "parameters": [
                     {
@@ -219,6 +219,35 @@
                         "required": true,
                         "schema": {
                             "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Its Ok",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/product_details/{id}": {
+            "get": {
+                "tags": [
+                    "Product Details"
+                ],
+                "description": "get product details data by product id",
+                "operationId": "a04cb985fe9f181a83105afd1de68c78",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
                         }
                     }
                 ],
