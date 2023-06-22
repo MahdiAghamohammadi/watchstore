@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class CommentResource extends JsonResource
 {
@@ -16,6 +17,7 @@ class CommentResource extends JsonResource
     {
         return [
             'body' => $this->body,
+            'parent' => Str::limit($this->parent->body, 20),
             'user' => $this->user->name,
         ];
     }

@@ -47,5 +47,10 @@ Route::prefix('/v1')->group(function () {
         Route::controller(UserApiController::class)->group(function () {
             Route::post('register', 'register');
         });
+
+        Route::controller(ProductApiController::class)->group(function () {
+            Route::post('save_product_comment/{product}', 'saveComment');
+        });
+
     });
 });

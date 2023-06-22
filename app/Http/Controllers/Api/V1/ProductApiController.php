@@ -8,6 +8,7 @@ use App\Http\Resources\ProductResource;
 use App\Http\Services\Keys;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -253,6 +254,67 @@ class ProductApiController extends Controller
     public function product_detail(Product $product)
     {
         $product->increment('review');
+        return response()->json([
+            'result' => true,
+            'message' => 'Application products Page',
+            'data' => [
+                new ProductResource($product),
+            ],
+        ]);
+    }
+
+    /**
+     * @OA\Post(
+     ** path="/api/v1/save_product_comment/{id}",
+     *  tags={"Product Details"},
+     *   security={{"sanctum":{}}},
+     *  description="save user comment for product",
+     *       @OA\Parameter(
+     *         description="product id",
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         ),
+     *     ),
+     * @OA\RequestBody(
+     *    required=true,
+     *         @OA\MediaType(
+     *           mediaType="multipart/form-data",
+     *           @OA\Schema(
+     *             @OA\Property(
+     *                  property="parent_id",
+     *                  description="product id",
+     *                  type="integer",
+     *               ),
+     *             @OA\Property(
+     *                  property="body",
+     *                  description="user comment text",
+     *                  type="string",
+     *               ),
+     *           ),
+     *       )
+     * ),
+     *   @OA\Response(
+     *      response=200,
+     *      description="Data saved",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   )
+     *)
+     **/
+    public function saveComment(Request $request, Product $product)
+    {
+        $user = auth()->user();
+        $comment = Comment::query()->create([
+            'body' => $request->input('body'),
+            'parent_id' => $request->input('parent_id', null),
+            'user_id' => $user->id,
+            'product_id' => $product->id,
+        ]);
         return response()->json([
             'result' => true,
             'message' => 'Application products Page',
