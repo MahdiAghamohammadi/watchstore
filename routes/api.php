@@ -40,6 +40,7 @@ Route::prefix('/v1')->group(function () {
         Route::get('products_by_category/{category}', 'products_by_category');
         Route::get('products_by_brand/{brand}', 'products_by_brand');
         Route::get('product_details/{product}', 'product_detail');
+        Route::post('search_product', 'search_product');
     });
 
     // with auth
