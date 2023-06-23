@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\HomeApiController;
+use App\Http\Controllers\Api\V1\PaymentApiController;
 use App\Http\Controllers\Api\V1\ProductApiController;
 use App\Http\Controllers\Api\V1\UserApiController;
 use Illuminate\Http\Request;
@@ -51,6 +52,10 @@ Route::prefix('/v1')->group(function () {
 
         Route::controller(ProductApiController::class)->group(function () {
             Route::post('save_product_comment/{product}', 'saveComment');
+        });
+
+        Route::controller(PaymentApiController::class)->group(function () {
+            Route::post('payment', 'payment')->name('payment');
         });
 
     });
