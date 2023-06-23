@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Enums\OrderStatus;
+use App\Enums\PaymentStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Shetabit\Multipay\Invoice;
+use Shetabit\Payment\Facade\Payment;
 
 class PaymentApiController extends Controller
 {
@@ -97,6 +101,50 @@ class PaymentApiController extends Controller
                 'discount' => $product->discount,
                 'discount_price' => $priceWithDiscount,
             ]);
+        }
+
+        $res = Payment::purchase(
+            (new Invoice)->amount($totalPrice),
+            function ($driver, $transactionId) use ($order) {
+                $order->update([
+                    'transaction_id' => $transactionId
+                ]);
+            }
+        )->pay()->toJson();
+        return json_decode($res);
+    }
+
+    public function callback(Request $request)
+    {
+        $authority = $_GET['Authority'];
+        $order = Order::query()->firstWhere('transaction_id', $authority);
+        $code = $order->code;
+        $orderDetails = OrderDetail::query()->where('order_id', $order->id)->get();
+
+        if ($_GET['Status'] == 'OK') {
+            $order->update([
+                'status' => PaymentStatus::Success->value
+            ]);
+            foreach ($orderDetails as $orderDetail) {
+                $product = Product::query()->find($orderDetail->product_id);
+                $product->increment('sold', $orderDetail->count);
+                $product->decrement('count', $orderDetail->count);
+
+                $orderDetail->update([
+                    'status' => OrderStatus::Send->value
+                ]);
+            }
+            return view('admin.pay.accept', compact('code'));
+        } else {
+            $order->update([
+                'status' => PaymentStatus::Failed->value
+            ]);
+            foreach ($orderDetails as $orderDetail) {
+                $orderDetail->update([
+                    'status' => OrderStatus::Rejected->value
+                ]);
+            }
+            return view('admin.pay.reject');
         }
     }
 }

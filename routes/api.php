@@ -44,6 +44,8 @@ Route::prefix('/v1')->group(function () {
         Route::post('search_product', 'search_product');
     });
 
+    Route::get('payment/callback', [PaymentApiController::class, 'callback']);
+
     // with auth
     Route::middleware('auth:sanctum')->group(function () {
         Route::controller(UserApiController::class)->group(function () {
