@@ -33,15 +33,15 @@ Route::prefix('/v1')->group(function () {
     Route::get('home', [HomeApiController::class, 'home'])->name('home');
 
     Route::controller(ProductApiController::class)->group(function () {
-        Route::get('most_sold_products', 'most_sold_products');
-        Route::get('most_viewed_products', 'most_viewed_products');
-        Route::get('newest_products', 'newest_products');
-        Route::get('cheapest_products', 'cheapest_products');
-        Route::get('most_expensive_products', 'most_expensive_products');
-        Route::get('products_by_category/{category}', 'products_by_category');
-        Route::get('products_by_brand/{brand}', 'products_by_brand');
-        Route::get('product_details/{product}', 'product_detail');
-        Route::post('search_product', 'search_product');
+        Route::get('most_sold_products', 'mostSoldProducts');
+        Route::get('most_viewed_products', 'mostViewedProducts');
+        Route::get('newest_products', 'newestProducts');
+        Route::get('cheapest_products', 'cheapestProducts');
+        Route::get('most_expensive_products', 'mostExpensiveProducts');
+        Route::get('products_by_category/{category}', 'productsByCategory');
+        Route::get('products_by_brand/{brand}', 'productsByBrand');
+        Route::get('product_details/{product}', 'productDetail');
+        Route::post('search_product', 'searchProduct');
     });
 
     Route::get('payment/callback', [PaymentApiController::class, 'callback']);

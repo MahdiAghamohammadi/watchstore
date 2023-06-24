@@ -28,7 +28,7 @@ class ProductApiController extends Controller
      *   )
      *)
      **/
-    public function most_sold_products()
+    public function mostSoldProducts()
     {
         return response()->json([
             'result' => true,
@@ -56,7 +56,7 @@ class ProductApiController extends Controller
      *   )
      *)
      **/
-    public function most_viewed_products()
+    public function mostViewedProducts()
     {
         return response()->json([
             'result' => true,
@@ -84,7 +84,7 @@ class ProductApiController extends Controller
      *   )
      *)
      **/
-    public function newest_products()
+    public function newestProducts()
     {
         return response()->json([
             'result' => true,
@@ -112,7 +112,7 @@ class ProductApiController extends Controller
      *   )
      *)
      **/
-    public function cheapest_products()
+    public function cheapestProducts()
     {
         return response()->json([
             'result' => true,
@@ -140,7 +140,7 @@ class ProductApiController extends Controller
      *   )
      *)
      **/
-    public function most_expensive_products()
+    public function mostExpensiveProducts()
     {
         return response()->json([
             'result' => true,
@@ -176,7 +176,7 @@ class ProductApiController extends Controller
      *   )
      *)
      **/
-    public function products_by_category(Category $category)
+    public function productsByCategory(Category $category)
     {
         return response()->json([
             'result' => true,
@@ -213,7 +213,7 @@ class ProductApiController extends Controller
      *   )
      *)
      **/
-    public function products_by_brand(Brand $brand)
+    public function productsByBrand(Brand $brand)
     {
         return response()->json([
             'result' => true,
@@ -251,7 +251,7 @@ class ProductApiController extends Controller
      *   )
      *)
      **/
-    public function product_detail(Product $product)
+    public function productDetail(Product $product)
     {
         $product->increment('review');
         return response()->json([
@@ -350,7 +350,7 @@ class ProductApiController extends Controller
      *   )
      *)
      **/
-    public function search_product(Request $request)
+    public function searchProduct(Request $request)
     {
         return response()->json([
             'result' => true,
