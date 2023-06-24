@@ -17,4 +17,8 @@ class Keys
     const products_by_category = 'products_by_category';
     const products_by_brand = 'products_by_brand';
     const searched_products = 'searched_products';
+    const user = 'user';
+    const user_processing_count = 'user_processing_count';
+    const user_received_count = 'user_received_count';
+    const user_rejected_count = 'user_rejected_count';
 }

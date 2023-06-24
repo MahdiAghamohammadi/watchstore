@@ -50,6 +50,7 @@ Route::prefix('/v1')->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::controller(UserApiController::class)->group(function () {
             Route::post('register', 'register');
+            Route::post('profile', 'profile');
         });
 
         Route::controller(ProductApiController::class)->group(function () {
