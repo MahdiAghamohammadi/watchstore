@@ -164,7 +164,7 @@
                     "Products Page"
                 ],
                 "description": "get products page data",
-                "operationId": "e9fc38c2f51252ab5efb6eb077586822",
+                "operationId": "bfc93076667d7ff62b5d8505a9b80045",
                 "responses": {
                     "200": {
                         "description": "Its Ok",
@@ -181,7 +181,7 @@
                     "Products Page"
                 ],
                 "description": "get products page data",
-                "operationId": "1ebc6de1adb33c4900192903b530c666",
+                "operationId": "1c07dc799c3365e29087042937fe39c9",
                 "responses": {
                     "200": {
                         "description": "Its Ok",
@@ -198,7 +198,7 @@
                     "Products Page"
                 ],
                 "description": "get products page data",
-                "operationId": "5a0de1ee574939c68b70595d039d04a7",
+                "operationId": "c7a0e53c211e69143f788304d93c4cec",
                 "responses": {
                     "200": {
                         "description": "Its Ok",
@@ -215,7 +215,7 @@
                     "Products Page"
                 ],
                 "description": "get products page data",
-                "operationId": "6350f3c577a9c7c4c4e2b8a8f8164fb8",
+                "operationId": "bc75635e1cf83342fba5f3cb4dbf9da0",
                 "responses": {
                     "200": {
                         "description": "Its Ok",
@@ -232,7 +232,7 @@
                     "Products Page"
                 ],
                 "description": "get products page data",
-                "operationId": "3dc098945006dcc179dafc0c0cec6e8a",
+                "operationId": "ccc364de045414ab2e157e50b29b5250",
                 "responses": {
                     "200": {
                         "description": "Its Ok",
@@ -249,7 +249,7 @@
                     "Products Page"
                 ],
                 "description": "get products data by category id",
-                "operationId": "e4063648c72caa43f2bd349b1a0026b0",
+                "operationId": "99161e6f72634af4c026b2c092eda8cf",
                 "parameters": [
                     {
                         "name": "id",
@@ -276,7 +276,7 @@
                     "Products Page"
                 ],
                 "description": "get products data by brand id",
-                "operationId": "c6813a677a7785aa6e7928cbfcf09493",
+                "operationId": "a69a0aa546d1af4ee61f9a6fa3c9b9f6",
                 "parameters": [
                     {
                         "name": "id",
@@ -303,7 +303,7 @@
                     "Product Details"
                 ],
                 "description": "get product details data by product id",
-                "operationId": "a04cb985fe9f181a83105afd1de68c78",
+                "operationId": "d544ace6cd752bb301d3d548b700a6a1",
                 "parameters": [
                     {
                         "name": "id",
@@ -386,7 +386,7 @@
                     "Products Page"
                 ],
                 "description": "search product",
-                "operationId": "2dd93d5a334f4e054d42a2f6f66a9132",
+                "operationId": "be382728c02fd77f9523cd6684bd5c7e",
                 "requestBody": {
                     "required": true,
                     "content": {

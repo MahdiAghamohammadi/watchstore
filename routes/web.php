@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\LogViewerController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PanelController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
@@ -81,5 +82,9 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     Route::controller(GalleryController::class)->group(function () {
         Route::get('create-product-gallery/{product}', 'addGallery')->name('create-product-gallery');
         Route::post('store-product-gallery/{product}', 'storeGallery')->name('store-product-gallery');
+    });
+
+    Route::controller(OrderController::class)->group(function () {
+        Route::get('orders', 'orders')->name('orders.panel');
     });
 });

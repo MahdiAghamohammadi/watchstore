@@ -11,6 +11,11 @@
                     <i class="icon ti-folder"></i>
                 </a>
             </li>
+            <li data-toggle="tooltip" title="سفارش ها">
+                <a href="#orders" title="سفارش ها">
+                    <i class="icon ti-shopping-cart"></i>
+                </a>
+            </li>
         </ul>
         <ul>
             <li data-toggle="tooltip" title="ویرایش پروفایل">
@@ -91,6 +96,14 @@
                     <li><a href="{{ route('property-groups.index') }}">لیست گروه ویژگی ها</a></li>
                     <li><a href="{{ route('properties.create') }}">ایجاد ویژگی ها</a></li>
                     <li><a href="{{ route('properties.index') }}">لیست ویژگی ها</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul id="orders">
+            <li>
+                <a href="#">سفارش ها</a>
+                <ul>
+                    <li><a href="{{ route('orders.panel') }}">لیست سفارش ها</a></li>
                 </ul>
             </li>
         </ul>
