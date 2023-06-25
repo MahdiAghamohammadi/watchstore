@@ -11,6 +11,7 @@
             <tr>
                 <th class="text-center align-middle text-primary">ردیف</th>
                 <th class="text-center align-middle text-primary">خریدار</th>
+                <th class="text-center align-middle text-primary">قیمت کل</th>
                 <th class="text-center align-middle text-primary">کد پیگیری</th>
                 <th class="text-center align-middle text-primary">وضعیت پرداخت</th>
                 <th class="text-center align-middle text-primary">لیست محصولات</th>
@@ -22,6 +23,7 @@
                 <tr>
                     <td class="text-center align-middle">{{ $orders->firstItem() + $index }}</td>
                     <td class="text-center align-middle">{{ $order->user->name }}</td>
+                    <td class="text-center align-middle">{{ number_format($order->total_price) }}</td>
                     <td class="text-center align-middle">{{ $order->code }}</td>
                     <td class="text-center align-middle">{{ $order->status }}</td>
                     <td class="text-center align-middle">

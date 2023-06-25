@@ -24,7 +24,13 @@
                 </a>
             </li>
             <li data-toggle="tooltip" title="خروج">
-                <a href="login.html" class="go-to-page">
+                @auth
+                    <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none">
+                        @csrf
+                    </form>
+                @endauth
+                <a href="{{ route('logout') }}" class="go-to-page"
+                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     <i class="icon ti-power-off"></i>
                 </a>
             </li>
