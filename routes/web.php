@@ -86,5 +86,6 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
 
     Route::controller(OrderController::class)->group(function () {
         Route::get('orders', 'orders')->name('orders.panel');
+        Route::get('order_details/{order}', 'orderDetails')->name('order.details');
     });
 });

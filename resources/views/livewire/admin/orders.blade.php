@@ -27,7 +27,7 @@
                     <td class="text-center align-middle">{{ $order->code }}</td>
                     <td class="text-center align-middle">{{ $order->status }}</td>
                     <td class="text-center align-middle">
-                        <a class="btn btn-outline-info" href="#">
+                        <a class="btn btn-outline-info" href="{{ route('order.details', $order->id) }}">
                             لیست محصولات
                         </a>
                     </td>
